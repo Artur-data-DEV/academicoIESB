@@ -23,9 +23,9 @@ const Menu = () => {
               <Link className="nav-link" to="/professores">
                 Professores
               </Link>
-              <Link className="nav-link" to="/turmas">
+              {/* <Link className="nav-link" to="/turmas">
                 Turmas
-              </Link>
+              </Link> */}
             </Nav>
           </Container>
         </Navbar>
