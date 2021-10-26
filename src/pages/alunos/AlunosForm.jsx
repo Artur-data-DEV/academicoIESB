@@ -57,11 +57,11 @@ const AlunosForm = () => {
                             {errors.telefone && <span className="text-danger">{errors.telefone.message}</span>}
                         </Col>
                     </Form.Group>
-                    <Form.Group as={Row} className="mb-3" controlId="CEP">
+                    <Form.Group as={Row} className="mb-3" controlId="cep">
                         <Form.Label column sm={2}>CEP: </Form.Label>
                         <Col sm={10}>
-                            <Form.Control type="text" placeholder="Insira seu CEP..." {...register("CEP", {required: true})} />
-                            {errors.CEP && <span className="text-danger">Campo Obrigatório</span>}
+                            <Form.Control type="text" placeholder="Insira seu CEP..." {...register("cep", validator.cep)} />
+                            {errors.cep && <span className="text-danger">{errors.cep.message}</span>}
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-3" controlId="Logradouro">

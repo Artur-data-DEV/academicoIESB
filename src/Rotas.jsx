@@ -3,8 +3,8 @@ import { Container } from "react-bootstrap";
 import { Route, Switch } from "react-router";
 import CursosForm from './pages/cursos/CursosForm'
 import AlunosForm from './pages/alunos/AlunosForm'
-import ProfessoresForm from "./pages/Professores/ProfessoresForm";
-import DisciplinasForm from "./pages/Disciplinas/DisciplinasForm";
+import ProfessoresForm from "./pages/professores/ProfessoresForm";
+import DisciplinasForm from "./pages/disciplinas/DisciplinasForm";
 
 
 const Rotas = () => {

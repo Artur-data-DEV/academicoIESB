@@ -1,6 +1,6 @@
 import mensagens from './Mensagens.js'
 
-const AlunoValidator = {
+const ProfessoresValidator = {
     nome: {
         required: mensagens.required,
         maxLength: { value: 50, message: mensagens.maxLength},
@@ -20,7 +20,8 @@ const AlunoValidator = {
         maxLength: { value: 10, message: "Insira um numero válido de 10 digitos, conforme sua matricula! - Ex.: 2014XXXXXX" },
         // min (OUTRAS OPÇÕES DE VALIDAÇÃO)
         // max (OUTRAS OPÇÕES DE VALIDAÇÃO)
-    },
+    }, 
+    
     telefone:{
         minLength: { value: 11, message: "Insira um numero válido! Ex.: +55 (61) 99999-9999" },
         maxLength: { value: 18, message: "Insira um numero válido! Ex.: +55 (61) 99999-9999" },
@@ -46,4 +47,4 @@ const AlunoValidator = {
     }
 };
 
-export default AlunoValidator;
+export default ProfessoresValidator;

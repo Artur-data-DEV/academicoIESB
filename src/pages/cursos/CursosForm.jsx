@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Box from '../../components/Box'
 import { FaCheck, FaArrowLeft } from 'react-icons/fa'
 import { useForm } from 'react-hook-form'
+import validator from '../../validators/CursosValidator'
 
 const CursosForm = () => {
 
@@ -20,22 +21,22 @@ const CursosForm = () => {
                     <Form.Group as={Row} className="mb-3" controlId="nome">
                         <Form.Label column sm={2}>Nome: </Form.Label>
                         <Col sm={10}>
-                            <Form.Control type="text" name="nome" {...register("nome", { required: true })} />
-                            {errors.nome && <span className="text-danger">Campo Obrigatório</span>}
+                            <Form.Control type="text" name="nome" {...register("nome", validator.nome)} />
+                            {errors.nome && <span className="text-danger">{errors.nome.message}</span>}
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-3" controlId="duracao">
                         <Form.Label column sm={2}>Duração: </Form.Label>
                         <Col sm={10}>
-                            <Form.Control type="text" name="duracao" {...register("duracao", { required: true })} />
-                            {errors.duracao && <span className="text-danger">Campo Obrigatório</span>}
+                            <Form.Control type="text" name="duracao" {...register("duracao", validator.duracao)} />
+                            {errors.duracao && <span className="text-danger">{errors.duracao.message}</span>}
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-3" controlId="modalidade">
                         <Form.Label column sm={2}>Modalidade: </Form.Label>
                         <Col sm={10}>
-                            <Form.Control type="text" name="modalidade" {...register("modalidade", { required: true })} />
-                            {errors.modalidade && <span className="text-danger">Campo Obrigatório</span>}
+                            <Form.Control type="number" name="modalidade" {...register("modalidade", validator.modalidade)} />
+                            {errors.modalidade && <span className="text-danger">{errors.modalidade.message}</span>}
                         </Col>
                     </Form.Group>
                     <div className="text-center">
