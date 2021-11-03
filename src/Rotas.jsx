@@ -1,20 +1,17 @@
-import React from "react";
-import { Container } from "react-bootstrap";
-import { Route, Switch } from "react-router";
+import React from 'react'
+import { Switch, Route } from 'react-router-dom'
+import { Container } from 'react-bootstrap'
 import CursosForm from './pages/cursos/CursosForm'
+import Alunos from './pages/alunos/Alunos'
 import AlunosForm from './pages/alunos/AlunosForm'
-import ProfessoresForm from "./pages/professores/ProfessoresForm";
-import DisciplinasForm from "./pages/disciplinas/DisciplinasForm";
-import Curso from "./pages/cursos/Curso";
-import Alunos from "./pages/alunos/Alunos";
-
+import ProfessoresForm from './pages/professores/ProfessoresForm'
+import Curso from './pages/cursos/Curso'
 
 const Rotas = () => {
-  return (
-    <>
-      <Switch>
+    return (
         <Container className="mt-3">
-        <Route exact path="/" component={Curso} />
+            <Switch>
+                <Route exact path="/" component={Curso} />
                 <Route exact path="/cursos" component={Curso} />
                 <Route exact path="/cursos/create" component={CursosForm} />
                 <Route exact path="/cursos/:id" component={CursosForm} />
@@ -22,10 +19,9 @@ const Rotas = () => {
                 <Route exact path="/alunos/create" component={AlunosForm} />
                 <Route exact path="/alunos/:id" component={AlunosForm} />
                 <Route exact path="/professores" component={ProfessoresForm} />
+            </Switch>
         </Container>
-      </Switch>
-    </>
-  );
-};
+    )
+}
 
-export default Rotas;
+export default Rotas
