@@ -3,9 +3,9 @@ import mensagens from "./Mensagens.js";
 const DisciplinasValidator = {
   nome: {
     required: mensagens.required,
-    maxLength: { value: 50, message: mensagens.maxLength },
+    maxLength: { value: 40, message: mensagens.maxLength },
   },
-  curso: {
+  cursoId: {
     required: mensagens.required,
     minLength: {
       value: 1,

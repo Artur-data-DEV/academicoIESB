@@ -3,40 +3,38 @@ import { Table } from 'react-bootstrap'
 import { FaPlus } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import Box from '../../components/Box'
-import AlunoService from '../../services/academico/AlunoService'
+import DisciplinaService from '../../services/academico/DisciplinaService'
 
-const Alunos = () => {
+const Disciplinas = () => {
 
-    const [alunos, setAlunos] = useState([])
+    const [disciplinas, setDisciplinas] = useState([])
 
-    useEffect(()=>{
-        const alunos = AlunoService.getAll()
-        setAlunos(alunos)
+    useEffect(() => {
+        const disciplinas = DisciplinaService.getAll()
+        setDisciplinas(disciplinas)
     }, [])
 
     return (
         <>
-            <Box title="Alunos">
-                <Link to="/alunos/create" className="btn btn-primary mb-3"><FaPlus /> Novo</Link>
+            <Box title="Disciplinas">
+                <Link to="/disciplinas/create" className="btn btn-primary mb-3"><FaPlus /> Novo</Link>
 
                 <Table striped bordered hover>
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>Nome</th>
-                            <th>CPF</th>
-                            <th>Telefone</th>
-                            <th>E-mail</th>
+                            <th>Duração</th>
+                           
                         </tr>
                     </thead>
                     <tbody>
-                        {alunos.map((aluno, i) => (
+                        {disciplinas.map((disciplinas, i) => (
                             <tr key={i}>
                                 <td>{i}</td>
-                                <td>{aluno.nome}</td>
-                                <td>{aluno.cpf}</td>
-                                <td>{aluno.telefone}</td>
-                                <td>{aluno.email}</td>
+                                <td>{disciplinas.nome}</td>
+                                <td>{disciplinas.cursoId}</td>
+    
                             </tr>
                         ))}
                     </tbody>
@@ -47,4 +45,4 @@ const Alunos = () => {
     )
 }
 
-export default Alunos
+export default Disciplinas
