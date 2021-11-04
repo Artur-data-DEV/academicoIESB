@@ -24,7 +24,7 @@ const Disciplinas = () => {
                         <tr>
                             <th>#</th>
                             <th>Nome</th>
-                            <th>Duração</th>
+                            <th>ID Curso</th>
                            
                         </tr>
                     </thead>
