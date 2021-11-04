@@ -8,6 +8,7 @@ import ProfessoresForm from './pages/professores/ProfessoresForm'
 import Curso from './pages/cursos/Curso'
 import DisciplinasForm from './pages/disciplinas/DisciplinasForm'
 import Disciplinas from './pages/disciplinas/Disciplina'
+import Professores from './pages/professores/Professor'
 
 const Rotas = () => {
     return (
@@ -20,7 +21,9 @@ const Rotas = () => {
                 <Route exact path="/alunos/create" component={AlunosForm} />
                 <Route exact path="/disciplinas" component={Disciplinas} />
                 <Route exact path="/disciplinas/create" component={DisciplinasForm} />
-                <Route exact path="/professores" component={ProfessoresForm} />
+                <Route exact path="/professores" component={Professores} />
+                <Route exact path="/professores/create" component={ProfessoresForm} />
+
             </Switch>
         </Container>
     )

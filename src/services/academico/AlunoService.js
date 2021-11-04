@@ -16,13 +16,13 @@ class AlunoService {
         localStorage.setItem('alunos', JSON.stringify(alunos))
     }
 
-    update(dados) {
+    // update(dados) {
 
-    }
+    // }
 
-    delete(id) {
+    // delete(id) {
 
-    }
+    // }
 }
 
 export default new AlunoService()

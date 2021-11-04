@@ -16,13 +16,13 @@ class CursoService {
         localStorage.setItem('cursos', JSON.stringify(cursos))
     }
 
-    update(dados) {
+    // update(dados) {
 
-    }
+    // }
 
-    delete(id) {
+    // delete(id) {
 
-    }
+    // }
 }
 
 export default new CursoService()

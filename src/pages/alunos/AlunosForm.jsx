@@ -51,20 +51,21 @@ const AlunosForm = (props) => {
                     <Form.Group as={Row} className="mb-3" controlId="nome">
                         <Form.Label column sm={2}>Nome: </Form.Label>
                         <Col sm={10}>
-                            <Form.Control type="text" {...register("nome", validador.nome)} />
+                            <Form.Control placeholder="Insira seu nome completo..." type="text" {...register("nome", validador.nome)} />
                             {errors.nome && <span className="text-danger">{errors.nome.message}</span>}
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-3" controlId="data">
                         <Form.Label column sm={2}>Data: </Form.Label>
                         <Col sm={10}>
-                            <Form.Control type="text" {...register("data")} mask="99/99/9999" onChange={handleChange} />
+                            <Form.Control placeholder="Insira a data de aniversário..." type="text" {...register("data")} mask="99/99/9999" onChange={handleChange} />
                         </Col>
                     </Form.Group>
 					<Form.Group as={Row} className="mb-3" controlId="cpf">
                         <Form.Label column sm={2}>CPF: </Form.Label>
                         <Col sm={10}>
                             <Form.Control 
+                            placeholder="Insira seu CPF..." 
                                 type="text" 
                                 {...register("cpf", validador.cpf)} 
                                 mask="999.999.999-99" 
@@ -76,27 +77,28 @@ const AlunosForm = (props) => {
                     <Form.Group as={Row} className="mb-3" controlId="matricula">
                         <Form.Label column sm={2}>Matrícula: </Form.Label>
                         <Col sm={10}>
-                            <Form.Control type="text" {...register("matricula", validador.matricula)} />
+                            <Form.Control placeholder="Insira seu código de matricula..." type="text" {...register("matricula", validador.matricula)} />
                             {errors.matricula && <span className="text-danger">{errors.matricula.message}</span>}
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-3" controlId="email">
                         <Form.Label column sm={2}>E-mail: </Form.Label>
                         <Col sm={10}>
-                            <Form.Control type="email" {...register("email", validador.email)} />
+                            <Form.Control  placeholder="Insira seu E-mail... "  type="email" {...register("email", validador.email)} />
                             {errors.email && <span className="text-danger">{errors.email.message}</span>}
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-3" controlId="telefone">
                         <Form.Label column sm={2}>Telefone: </Form.Label>
                         <Col sm={10}>
-                            <Form.Control type="text" {...register("telefone")} mask="(99) 99999-9999" onChange={handleChange} />
+                            <Form.Control placeholder="Insira seu número de telefone... " type="text" {...register("telefone")} mask="(99) 99999-9999" onChange={handleChange} />
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-3" controlId="cep">
                         <Form.Label column sm={2}>CEP: </Form.Label>
                         <Col sm={10}>
                             <Form.Control 
+                            placeholder="Insira seu CEP..."
                                 type="text" 
                                 {...register("cep")} 
                                 mask="99.999-999"  
@@ -126,13 +128,13 @@ const AlunosForm = (props) => {
                     <Form.Group as={Row} className="mb-3" controlId="complemento">
                         <Form.Label column sm={2}>Complemento: </Form.Label>
                         <Col sm={10}>
-                            <Form.Control type="text" {...register("complemento")} />
+                            <Form.Control placeholder="Insira o complemento do seu endereço..."  type="text" {...register("complemento")} />
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-3" controlId="numero">
                         <Form.Label column sm={2}>Número: </Form.Label>
                         <Col sm={10}>
-                            <Form.Control type="text" {...register("numero")} />
+                            <Form.Control placeholder="Insira o número da sua residência..." type="number" {...register("numero")} />
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-3" controlId="bairro">
