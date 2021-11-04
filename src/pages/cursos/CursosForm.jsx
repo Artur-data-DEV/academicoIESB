@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Col, Form, Row, Button } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import { FaArrowLeft, FaCheck } from 'react-icons/fa'
@@ -9,10 +9,23 @@ import validador from '../../validators/CursosValidator'
 
 const CursosForm = (props) => {
 
-    const { register, handleSubmit, formState: {errors} } = useForm()
+    const { register, handleSubmit,setValue, formState: {errors} } = useForm()
 
-    function enviarDados(dados){
-        CursoService.create(dados)
+
+    useEffect(() => {
+        const id = props.match.params.id
+
+        if (id) {
+            const curso = CursoService.get(id)
+            for (let campo in curso) {
+                setValue(campo, curso[campo])
+            }
+        }
+    }, [props, setValue])
+
+    function enviarDados(dados) {
+        const id = props.match.params.id
+        id ? CursoService.update(dados, id) : CursoService.create(dados)
         props.history.push('/cursos')
     }
 
@@ -51,4 +64,4 @@ const CursosForm = (props) => {
     )
 }
 
-export default CursosForm
+export default CursosForm;

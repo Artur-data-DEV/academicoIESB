@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Col, Form, Row, Button } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import { FaArrowLeft, FaCheck } from 'react-icons/fa'
@@ -9,13 +9,26 @@ import validador from '../../validators/DisciplinasValidator'
 
 const DisciplinasForm = (props) => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm()
+    const { register, setValue, handleSubmit, formState: { errors } } = useForm()
+
+  
+    useEffect(() => {
+        const id = props.match.params.id
+
+        if (id) {
+            const disciplina = DisciplinaService.get(id)
+            for (let campo in disciplina) {
+                setValue(campo, disciplina[campo])
+            }
+        }
+    }, [props, setValue])
 
     function enviarDados(dados) {
-        DisciplinaService.create(dados)
+        const id = props.match.params.id
+        id ? DisciplinaService.update(dados, id) : DisciplinaService.create(dados)
         props.history.push('/disciplinas')
     }
-
+    
     return (
         <>
             <Box title="Disciplinas ">
