@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Col, Form, Row, Button } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import { FaArrowLeft, FaCheck } from 'react-icons/fa'
@@ -14,35 +14,47 @@ const ProfessoresForm = (props) => {
 
     const { register, handleSubmit, setValue, formState: { errors } } = useForm()
 
+    useEffect(() => {
+        const id = props.match.params.id
+        if (id) {
+            const professores = ProfessoresService.get(id)
+            for (let campo in professores) {
+                setValue(campo, professores[campo])
+            }
+        }
+    }, [props, setValue])
+
     function enviarDados(dados) {
-        ProfessoresService.create(dados)
+        const id = props.match.params.id
+        id ? ProfessoresService.update(dados, id) : ProfessoresService.create(dados)
         props.history.push('/professores')
     }
 
-    function handleChange(event) {
-        const name = event.target.name
-        const mascara = event.target.getAttribute('mask')
+        function handleChange(event) {
+            const name = event.target.name
+            const mascara = event.target.getAttribute('mask')
 
-        let valor = unMask(event.target.value)
-        valor = mask(valor, mascara)
+            let valor = unMask(event.target.value)
+            valor = mask(valor, mascara)
 
-        setValue(name, valor)
-    }
+            setValue(name, valor)
+        }
 
-    function handleCep(event) {
+        function handleCep(event) {
 
-        const valor = unMask(event.target.value)
+            const valor = unMask(event.target.value)
 
-        apiCep.get(`/ws/${valor}/json/`).then(resultado => {
-            const endereco = resultado.data
+            apiCep.get(`/ws/${valor}/json/`).then(resultado => {
+                const endereco = resultado.data
 
-            setValue('logradouro', endereco.logradouro)
-            setValue('complemento', endereco.complemento)
-            setValue('uf', endereco.uf)
-            setValue('municipio', endereco.localidade)
-            setValue('bairro', endereco.bairro)
-        })
-    }
+                setValue('logradouro', endereco.logradouro)
+                setValue('complemento', endereco.complemento)
+                setValue('uf', endereco.uf)
+                setValue('municipio', endereco.localidade)
+                setValue('bairro', endereco.bairro)
+            })
+        }
+
 
     return (
         <>

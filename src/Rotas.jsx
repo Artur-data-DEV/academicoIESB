@@ -26,6 +26,7 @@ const Rotas = () => {
                 <Route exact path="/disciplinas/:id" component={DisciplinasForm} />
                 <Route exact path="/professores" component={Professores} />
                 <Route exact path="/professores/create" component={ProfessoresForm} />
+                <Route exact path="/professores/:id" component={ProfessoresForm} />
 
             </Switch>
         </Container>
