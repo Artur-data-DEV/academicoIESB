@@ -3,7 +3,7 @@ import { Table } from 'react-bootstrap'
 import { FaEdit, FaPlus, FaRegTrashAlt } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import Box from '../../components/Box'
-import DisciplinaService from '../../services/academico/DisciplinaService'
+import DisciplinaService from '../../services/musicas/DisciplinaService'
 
 const Disciplinas = () => {
 

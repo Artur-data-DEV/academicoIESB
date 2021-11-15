@@ -1,11 +1,11 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
-import CursosForm from './pages/cursos/CursosForm'
+import MusicasForm from './pages/musicas/MusicasForm'
 import Alunos from './pages/alunos/Alunos'
 import AlunosForm from './pages/alunos/AlunosForm'
 import ProfessoresForm from './pages/professores/ProfessoresForm'
-import Curso from './pages/cursos/Curso'
+import Musica from './pages/musicas/Musica'
 import DisciplinasForm from './pages/disciplinas/DisciplinasForm'
 import Disciplinas from './pages/disciplinas/Disciplina'
 import Professores from './pages/professores/Professor'
@@ -14,10 +14,10 @@ const Rotas = () => {
     return (
         <Container className="mt-3">
             <Switch>
-                <Route exact path="/" component={Alunos} />
-                <Route exact path="/cursos" component={Curso} />
-                <Route exact path="/cursos/create" component={CursosForm} />
-                <Route exact path="/cursos/:id" component={CursosForm} />
+                <Route exact path="/" component={Musica} />
+                <Route exact path="/musicas" component={Musica} />
+                <Route exact path="/musicas/create" component={MusicasForm} />
+                <Route exact path="/musicas/:id" component={MusicasForm} />
                 <Route exact path="/alunos" component={Alunos} />
                 <Route exact path="/alunos/create" component={AlunosForm} />
                 <Route exact path="/alunos/:id" component={AlunosForm} />

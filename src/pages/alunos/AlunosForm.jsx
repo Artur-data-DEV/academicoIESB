@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { mask, unMask } from 'remask'
 import Box from '../../components/Box'
 import apiCep from '../../services/apiCep'
-import AlunoService from '../../services/academico/AlunoService'
+import AlunoService from '../../services/musicas/AlunoService'
 import validador from '../../validators/AlunoValidator'
 
 const AlunosForm = (props) => {
