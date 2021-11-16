@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { mask, unMask } from 'remask'
 import Box from '../../components/Box'
 import apiCep from '../../services/apiCep'
-import ProfessoresService from '../../services/musicas/ProfessoresService'
+import ProfessoresService from '../../services/ProfessoresService'
 import validador from '../../validators/ProfessoresValidator'
 
 const ProfessoresForm = (props) => {

@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import { FaArrowLeft, FaCheck } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import Box from '../../components/Box'
-import DisciplinaService from '../../services/musicas/DisciplinaService'
+import DisciplinaService from '../../services/DisciplinaService'
 import validador from '../../validators/DisciplinasValidator'
 
 const DisciplinasForm = (props) => {

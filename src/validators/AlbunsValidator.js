@@ -1,6 +1,6 @@
 import mensagens from "./Mensagens.js";
 
-const MusicasValidator = {
+const AlbunsValidator = {
   nome: {
     required: mensagens.required,
     minLength: { value: 3, message: mensagens.minLength },
@@ -10,13 +10,6 @@ const MusicasValidator = {
     required: mensagens.required,
     minLength: { value: 3, message: mensagens.minLength },
     maxLength: { value: 40, message: mensagens.maxLength },
-  },
-
-  album: {
-    required: mensagens.required,
-    minLength: { value: 3, message: mensagens.minLength },
-    maxLength: { value: 40, message: mensagens.maxLength },
-    
   },
   genero: {
     required: mensagens.required,
@@ -31,4 +24,4 @@ const MusicasValidator = {
   },
 };
 
-export default MusicasValidator;
+export default AlbunsValidator;

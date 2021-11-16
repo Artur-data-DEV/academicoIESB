@@ -10,10 +10,10 @@ const Menu = () => {
                 <Navbar.Brand href="/"><img src={Spotify} width="150" height="50" alt="Spotify logo"/></Navbar.Brand>
                 <Nav className="me-auto">
                     <Link className="nav-link" to="/musicas">Musicas</Link>
-                    <Link className="nav-link" to="/albuns">Albuns</Link>
-                    
+                    <Link className="nav-link" to="/albuns">Albuns</Link>                    
                     <Link className="nav-link" to="/artistas">Artistas</Link>
                     <Link className="nav-link" to="/playlists">Playlists</Link>
+                    <Link className="nav-link" to="/favoritos">Favoritos</Link>
                     
  
                                   

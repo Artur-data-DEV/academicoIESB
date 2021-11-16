@@ -2,15 +2,16 @@ import React, { useEffect } from 'react'
 import { Col, Form, Row, Button } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import { FaArrowLeft, FaCheck } from 'react-icons/fa'
+
 import { Link } from 'react-router-dom'
 import { mask, unMask } from 'remask'
 import Box from '../../components/Box'
-import MusicasService from '../../services/MusicasService'
-import validador from '../../validators/MusicasValidator'
+import AlbunsService from '../../services/AlbunsService'
+import validador from '../../validators/AlbunsValidator'
 
 
 
-const MusicasForm = (props) => {
+const AlbunsForm = (props) => {
 
     const { register, handleSubmit, setValue, formState: { errors } } = useForm()
 
@@ -19,17 +20,17 @@ const MusicasForm = (props) => {
         const id = props.match.params.id
 
         if (id) {
-            const musica = MusicasService.get(id)
-            for (let campo in musica) {
-                setValue(campo, musica[campo])
+            const album = AlbunsService.get(id)
+            for (let campo in album) {
+                setValue(campo, album[campo])
             }
         }
     }, [props, setValue])
 
     function enviarDados(dados) {
         const id = props.match.params.id
-        id ? MusicasService.update(dados, id) : MusicasService.create(dados)
-        props.history.push('/musicas')
+        id ? AlbunsService.update(dados, id) : AlbunsService.create(dados)
+        props.history.push('/albuns')
     }
 
     function handleChange(event) {
@@ -44,12 +45,12 @@ const MusicasForm = (props) => {
 
     return (
         <>
-            <Box title="Nova Música">
+            <Box title="Novo Album">
                 <Form>
                     <Form.Group as={Row} className="mb-3" controlId="nome">
-                        <Form.Label column sm={2} >Nome da musica: </Form.Label>
+                        <Form.Label column sm={2} >Nome do album: </Form.Label>
                         <Col sm={10}>
-                            <Form.Control placeholder="Insira o nome da música..." type="text" {...register("nome", validador.nome)} />
+                            <Form.Control placeholder="Insira o nome do album..." type="text" {...register("nome", validador.nome)} />
                             {errors.nome && <span className="text-danger">{errors.nome.message}</span>}
                         </Col>
                     </Form.Group>
@@ -58,13 +59,6 @@ const MusicasForm = (props) => {
                         <Col sm={10}>
                             <Form.Control placeholder="Insira o artista..." type="text" {...register("artista", validador.nome)} />
                             {errors.nome && <span className="text-danger">{errors.artista.message}</span>}
-                        </Col>
-                    </Form.Group>
-                    <Form.Group as={Row} className="mb-3" controlId="album">
-                        <Form.Label column sm={2} >Album: </Form.Label>
-                        <Col sm={10}>
-                            <Form.Control placeholder="Insira o nome do album..." type="text" {...register("album", validador.album)} />
-                            {errors.album && <span className="text-danger">{errors.album.message}</span>}
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-3" controlId="genero">
@@ -93,13 +87,13 @@ const MusicasForm = (props) => {
                     <Form.Group as={Row} className="mb-3" controlId="ano">
                         <Form.Label column sm={2}>Ano: </Form.Label>
                         <Col sm={10}>
-                            <Form.Control placeholder="Insira a ano do musica..." type="text"  {...register("ano", validador.ano)} onChange={handleChange} mask="9999"/>
+                            <Form.Control placeholder="Insira a ano do album..." type="text"  {...register("ano", validador.ano)} onChange={handleChange} mask="9999"/>
                             {errors.ano && <span className="text-danger">{errors.ano.message}</span>}
                         </Col>
                     </Form.Group>
                     <div className="text-center" >
                         <Button style={{margin: "10px"}} variant="success" onClick={handleSubmit(enviarDados)}><FaCheck /> Salvar</Button>
-                        <Link className="btn btn-danger" to="/musicas"><FaArrowLeft /> Voltar</Link>
+                        <Link className="btn btn-danger" to="/albuns"><FaArrowLeft /> Voltar</Link>
                     </div>
                 </Form>
             </Box>
@@ -107,4 +101,4 @@ const MusicasForm = (props) => {
     )
 }
 
-export default MusicasForm;
+export default AlbunsForm;

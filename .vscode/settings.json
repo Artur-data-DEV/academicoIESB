@@ -21,6 +21,7 @@
     "Duração",
     "endereço",
     "enviar",
+    "favoritar",
     "Insira",
     "Logradouro",
     "Matricula",
@@ -49,5 +50,6 @@
     "valido",
     "válido",
     "Voltar"
-  ]
+  ],
+  "cSpell.ignoreWords": ["Albuns", "favoritos"]
 }
