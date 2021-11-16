@@ -1,14 +1,18 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
+import Musica from './pages/musicas/Musica'
 import MusicasForm from './pages/musicas/MusicasForm'
 import Albuns from './pages/albuns/Albuns'
 import AlbunsForm from './pages/albuns/AlbunsForm'
-import ProfessoresForm from './pages/professores/ProfessoresForm'
-import Musica from './pages/musicas/Musica'
-import DisciplinasForm from './pages/disciplinas/DisciplinasForm'
-import Disciplinas from './pages/disciplinas/Disciplina'
-import Professores from './pages/professores/Professor'
+import Artistas from './pages/artistas/Artistas'
+import ArtistasForm from './pages/artistas/ArtistasForm'
+import Favoritos from './pages/favoritos/Favoritos'
+import FavoritosForm from './pages/favoritos/FavoritosForm'
+import Playlists from './pages/playlists/Playlists'
+import PlaylistsForm from './pages/playlists/PlaylistsForm'
+
+
 
 const Rotas = () => {
     return (
@@ -21,12 +25,15 @@ const Rotas = () => {
                 <Route exact path="/albuns" component={Albuns} />
                 <Route exact path="/albuns/create" component={AlbunsForm} />
                 <Route exact path="/albuns/:id" component={AlbunsForm} />
-                <Route exact path="/disciplinas" component={Disciplinas} />
-                <Route exact path="/disciplinas/create" component={DisciplinasForm} />
-                <Route exact path="/disciplinas/:id" component={DisciplinasForm} />
-                <Route exact path="/professores" component={Professores} />
-                <Route exact path="/professores/create" component={ProfessoresForm} />
-                <Route exact path="/professores/:id" component={ProfessoresForm} />
+                <Route exact path="/artistas" component={Artistas} />
+                <Route exact path="/artistas/create" component={ArtistasForm} />
+                <Route exact path="/artistas/:id" component={ArtistasForm} />
+                <Route exact path="/favoritos" component={Favoritos} />
+                <Route exact path="/favoritos/create" component={FavoritosForm} />
+                <Route exact path="/favoritos/:id" component={FavoritosForm} />
+                <Route exact path="/playlists" component={Playlists} />
+                <Route exact path="/playlists/create" component={PlaylistsForm} />
+                <Route exact path="/playlists/:id" component={PlaylistsForm} />
 
             </Switch>
         </Container>

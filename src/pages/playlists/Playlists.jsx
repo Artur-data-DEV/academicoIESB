@@ -1,37 +1,29 @@
 import React, { useState, useEffect } from 'react'
 import { Table } from 'react-bootstrap'
-import { FaPlus, FaEdit, FaRegTrashAlt } from 'react-icons/fa'
-import { MdPlaylistAdd, MdFavoriteBorder, MdFavorite } from 'react-icons/md'
+import { FaEdit, FaPlus, FaRegTrashAlt } from 'react-icons/fa'
+import { MdFavorite, MdFavoriteBorder, MdPlaylistAdd } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 import Box from '../../components/Box'
-import AlbunsService from '../../services/AlbunsService'
+import PlaylistService from '../../services/PlaylistsService'
 
-const Albuns = () => {
+const Playlists = () => {
 
-    const [albuns, setAlbuns] = useState([])
+    const [playlists, setPlaylists] = useState([])
     const [favorites, setFavorites] = useState([]);
 
-
-    // useEffect(() => {
-    //     if(getArray !== 0){
-    //         setFavorites([...getArray])
-    //     }
-    // }, [])
-
     useEffect(() => {
-        const albuns = AlbunsService.getAll()
-        setAlbuns(albuns)
+        const playlists = PlaylistService.getAll()
+        setPlaylists(playlists)
     }, [])
 
-
-
     function excluir(i) {
+
         if (window.confirm('Deseja realmente excluir o registro?')) {
-            AlbunsService.delete(i)
-            setAlbuns(AlbunsService.getAll())
+            PlaylistService.delete(i)
+            setPlaylists(PlaylistService.getAll())
         }
     }
-   
+
     const addFav = (props) => {
         console.log(props)
         if (window.confirm('Deseja realmente favoritar o registro?')) {
@@ -57,12 +49,9 @@ const Albuns = () => {
     }
 
 
-
-
-
     return (
         <>
-            <Box title="Albuns">
+            <Box title="Playlists">
 
 
                 <Table striped bordered hover>
@@ -70,35 +59,36 @@ const Albuns = () => {
                         <tr>
 
                             <th>#</th>
-                            <th>Nome do album</th>
-                            <th>Artista(s)</th>
+                            <th>Nome do playlist</th>
                             <th>Genero</th>
-                            <th>Ano</th>
+                            <th>Data de Nascimento</th>
+                            <th>Data de Falescimento</th>
                             <th>Ações</th>
                             <th>Mais</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {albuns.map((album, i) => (
+                        {playlists.map((playlist, i) => (
 
                             
 
                             
                             <tr key={i}>
                                 <td>{i}</td>
-                                <td>{album.nome}</td>
-                                <td>{album.artista}</td>
-                                <td>{album.genero}</td>
-                                <td>{album.ano}</td>
+                                <td>{playlist.nome}</td>
+                                <td>{playlist.dataNasc}</td>
+                                <td>{playlist.dataFalesc}</td>
+                                <td>{playlist.país}</td>
+                                <td>{playlist.instrumento}</td>
                                 <td>
-                                    <Link to={"/albuns/" + i}>
+                                    <Link to={"/playlists/" + i}>
                                         <FaEdit title="Editar" />
                                     </Link>
                                     {' '}
                                     <FaRegTrashAlt className="text-danger " title="Excluir" onClick={() => excluir(i)} />
                                 </td>
                                 <td>
-                                    {favorites.includes() ? (< MdFavorite className="text-danger" title="Favoritar" onClick={() => addFav(album, i)} />) : (< MdFavoriteBorder className="text-danger" title="Favoritar" onClick={() => addFav(album, i)} />)} {' '}
+                                    {favorites.includes() ? (< MdFavorite className="text-danger" title="Favoritar" onClick={() => addFav(playlist, i)} />) : (< MdFavoriteBorder className="text-danger" title="Favoritar" onClick={() => addFav(playlist, i)} />)} {' '}
                                     {/* {console.log(album, i)} */}
                                     <MdPlaylistAdd className="text-dark" title="Excluir" onClick={() => excluir(i)} />
 
@@ -107,10 +97,10 @@ const Albuns = () => {
                         ))}
                     </tbody>
                 </Table>
-                <Link to="/albuns/create" className="btn btn-primary mb-3"><FaPlus /> Adicionar Album</Link>
+                <Link to="/albuns/create" className="btn btn-primary mb-3"><FaPlus /> Adicionar Playlist</Link>
             </Box>
         </>
     )
 }
 
-export default Albuns
+export default Playlists
