@@ -36,15 +36,23 @@ const FavoritosForm = (props) => {
                     <Form.Group as={Row} className="mb-3" controlId="nome">
                         <Form.Label column sm={2}>Nome: </Form.Label>
                         <Col sm={10}>
-                            <Form.Control placeholder="Insira o nome da favorito..."type="text" {...register("nome", validador.nome)} />
+                            <Form.Control placeholder="Insira o nome do favorito..."type="text" {...register("nome", validador.nome)} />
                             {errors.nome && <span className="text-danger">{errors.nome.message}</span>}
                         </Col>
                     </Form.Group>
-                    <Form.Group as={Row} className="mb-3" controlId="cursoId">
-                        <Form.Label column sm={2}>ID: </Form.Label>
+                    <Form.Group as={Row} className="mb-3" controlId="tipo">
+                        <Form.Label column sm={2}>Tipo: </Form.Label>
                         <Col sm={10}>
-                            <Form.Control placeholder="Insira o ID do curso..."type="text" {...register("cursoId", validador.cursoId)} />
-                            {errors.cursoId && <span className="text-danger">{errors.cursoId.message}</span>}
+                            <Form.Select aria-label="Selecione o tipo..." type="text" {...register("tipo", validador.tipo)} >
+                                <option value={''}>Selecione um tipo...</option>
+                                <option value="Musica">Musica</option>
+                                <option value="Artista">Artista</option>
+                                <option value="Album">Album</option>
+                            
+                            </Form.Select>
+
+                            {errors.tipo && <span className="text-danger">{errors.tipo.message}</span>}
+
                         </Col>
                     </Form.Group>
                     <div className="text-center">

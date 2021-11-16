@@ -1,33 +1,33 @@
-class DisciplinaService {
+class ArtistaService {
     
     getAll() {
-        const disciplina = localStorage.getItem('disciplina')
-        return disciplina ? JSON.parse(disciplina) : []
+        const artista = localStorage.getItem('artista')
+        return artista ? JSON.parse(artista) : []
     }
 
     get(id) {
-        const disciplina = this.getAll()
-        return disciplina[id]
+        const artista = this.getAll()
+        return artista[id]
     }
 
     create(dados) {
-        const disciplina = this.getAll()
-        disciplina.push(dados)
+        const artista = this.getAll()
+        artista.push(dados)
 
-        localStorage.setItem('disciplina', JSON.stringify(disciplina))
+        localStorage.setItem('artista', JSON.stringify(artista))
     }
 
     update(dados, id) {
-        const disciplina = this.getAll()
-        disciplina.splice(id, 1, dados)
-        localStorage.setItem('disciplina', JSON.stringify(disciplina))
+        const artista = this.getAll()
+        artista.splice(id, 1, dados)
+        localStorage.setItem('artista', JSON.stringify(artista))
     }
 
     delete(id) {
-        const disciplina = this.getAll()
-        disciplina.splice(id, 1)
-        localStorage.setItem('disciplina', JSON.stringify(disciplina))
+        const artista = this.getAll()
+        artista.splice(id, 1)
+        localStorage.setItem('artista', JSON.stringify(artista))
     }
 }
 
-export default new DisciplinaService()
+export default new ArtistaService()

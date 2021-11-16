@@ -60,9 +60,11 @@ const Artistas = () => {
 
                             <th>#</th>
                             <th>Nome do artista</th>
+                            <th>País</th>
                             <th>Genero</th>
                             <th>Data de Nascimento</th>
                             <th>Data de Falescimento</th>
+                            <th>Instrumento(s)</th>
                             <th>Ações</th>
                             <th>Mais</th>
                         </tr>
@@ -76,9 +78,10 @@ const Artistas = () => {
                             <tr key={i}>
                                 <td>{i}</td>
                                 <td>{artista.nome}</td>
+                                <td>{artista.país}</td>
+                                <td>{artista.genero}</td>
                                 <td>{artista.dataNasc}</td>
                                 <td>{artista.dataFalesc}</td>
-                                <td>{artista.país}</td>
                                 <td>{artista.instrumento}</td>
                                 <td>
                                     <Link to={"/artistas/" + i}>
@@ -97,7 +100,7 @@ const Artistas = () => {
                         ))}
                     </tbody>
                 </Table>
-                <Link to="/albuns/create" className="btn btn-primary mb-3"><FaPlus /> Adicionar Album</Link>
+                <Link to="/artistas/create" className="btn btn-primary mb-3"><FaPlus /> Adicionar Artista</Link>
             </Box>
         </>
     )

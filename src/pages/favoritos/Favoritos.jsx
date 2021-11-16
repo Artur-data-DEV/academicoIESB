@@ -60,9 +60,7 @@ const Favoritos = () => {
 
                             <th>#</th>
                             <th>Nome do favorito</th>
-                            <th>Genero</th>
-                            <th>Data de Nascimento</th>
-                            <th>Data de Falescimento</th>
+                            <th>Tipo</th>
                             <th>Ações</th>
                             <th>Mais</th>
                         </tr>
@@ -76,10 +74,8 @@ const Favoritos = () => {
                             <tr key={i}>
                                 <td>{i}</td>
                                 <td>{favorito.nome}</td>
-                                <td>{favorito.dataNasc}</td>
-                                <td>{favorito.dataFalesc}</td>
-                                <td>{favorito.país}</td>
-                                <td>{favorito.instrumento}</td>
+                                <td>{favorito.tipo}</td>
+    
                                 <td>
                                     <Link to={"/favoritos/" + i}>
                                         <FaEdit title="Editar" />
@@ -88,7 +84,7 @@ const Favoritos = () => {
                                     <FaRegTrashAlt className="text-danger " title="Excluir" onClick={() => excluir(i)} />
                                 </td>
                                 <td>
-                                    {favorites.includes() ? (< MdFavorite className="text-danger" title="Favoritar" onClick={() => addFav(favorito, i)} />) : (< MdFavoriteBorder className="text-danger" title="Favoritar" onClick={() => addFav(favorito, i)} />)} {' '}
+                                    {favorites.includes() ?  (< MdFavoriteBorder className="text-danger" title="Favoritar" onClick={() => addFav(favorito, i)} />) : (< MdFavorite className="text-danger" title="Favoritar" onClick={() => addFav(favorito, i)} />) } {' '}
                                     {/* {console.log(album, i)} */}
                                     <MdPlaylistAdd className="text-dark" title="Excluir" onClick={() => excluir(i)} />
 
@@ -97,7 +93,7 @@ const Favoritos = () => {
                         ))}
                     </tbody>
                 </Table>
-                <Link to="/albuns/create" className="btn btn-primary mb-3"><FaPlus /> Adicionar Favorito</Link>
+                <Link to="/favoritos/create" className="btn btn-primary mb-3"><FaPlus /> Adicionar Favorito</Link>
             </Box>
         </>
     )

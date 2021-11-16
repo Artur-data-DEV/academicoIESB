@@ -1,33 +1,33 @@
-class ProfessoresService {
+class PlaylistsService {
     
     getAll() {
-        const professores = localStorage.getItem('professores')
-        return professores ? JSON.parse(professores) : []
+        const playlists = localStorage.getItem('playlists')
+        return playlists ? JSON.parse(playlists) : []
     }
 
     get(id) {
-        const professores = this.getAll()
-        return professores[id]
+        const playlists = this.getAll()
+        return playlists[id]
     }
 
     create(dados) {
-        const professores = this.getAll()
-        professores.push(dados)
+        const playlists = this.getAll()
+        playlists.push(dados)
 
-        localStorage.setItem('professores', JSON.stringify(professores))
+        localStorage.setItem('playlists', JSON.stringify(playlists))
     }
 
     update(dados, id) {
-        const professores = this.getAll()
-        professores.splice(id, 1, dados)
-        localStorage.setItem('professores', JSON.stringify(professores))
+        const playlists = this.getAll()
+        playlists.splice(id, 1, dados)
+        localStorage.setItem('playlists', JSON.stringify(playlists))
     }
 
     delete(id) {
-        const professores = this.getAll()
-        professores.splice(id, 1)
-        localStorage.setItem('professores', JSON.stringify(professores))
+        const playlists = this.getAll()
+        playlists.splice(id, 1)
+        localStorage.setItem('playlists', JSON.stringify(playlists))
     }
 }
 
-export default new ProfessoresService()
+export default new PlaylistsService()
