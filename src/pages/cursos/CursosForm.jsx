@@ -1,22 +1,32 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import { Col, Form, Row, Button } from 'react-bootstrap'
+import { useForm } from 'react-hook-form'
+import { FaArrowLeft, FaCheck } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import Box from '../../components/Box'
-import { FaCheck, FaArrowLeft } from 'react-icons/fa'
+import CursoService from '../../services/academico/CursoService'
+import validador from '../../validators/CursosValidator'
 
-const CursosForm = () => {
+const CursosForm = (props) => {
 
-    const [dados, setDados] = useState({})
+    const { register, handleSubmit,setValue, formState: {errors} } = useForm()
 
-    function handleDados(event){
-        const valor = event.target.value
-        const name = event.target.name
 
-        setDados({...dados, [name]: valor});
-    }
+    useEffect(() => {
+        const id = props.match.params.id
 
-    function handleSubmit(){
-        console.log(dados);
+        if (id) {
+            const curso = CursoService.get(id)
+            for (let campo in curso) {
+                setValue(campo, curso[campo])
+            }
+        }
+    }, [props, setValue])
+
+    function enviarDados(dados) {
+        const id = props.match.params.id
+        id ? CursoService.update(dados, id) : CursoService.create(dados)
+        props.history.push('/cursos')
     }
 
     return (
@@ -24,25 +34,28 @@ const CursosForm = () => {
             <Box title="Cursos">
                 <Form>
                     <Form.Group as={Row} className="mb-3" controlId="nome">
-                        <Form.Label column sm={2}>Nome: </Form.Label>
+                        <Form.Label column sm={2} >Nome: </Form.Label>
                         <Col sm={10}>
-                            <Form.Control type="text" name="nome" onChange={handleDados} />
+                            <Form.Control placeholder="Insira o nome do curso..." type="text" {...register("nome", validador.nome)} />
+                            {errors.nome && <span className="text-danger">{errors.nome.message}</span>}
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-3" controlId="duracao">
                         <Form.Label column sm={2}>Duração: </Form.Label>
                         <Col sm={10}>
-                            <Form.Control type="number" name="duracao" onChange={handleDados}  />
+                            <Form.Control placeholder="Insira tempo de duração... Ex.: 2 anos " type="text" {...register("duracao", validador.duracao)} />
+                            {errors.duracao && <span className="text-danger">{errors.duracao.message}</span>}
                         </Col>
                     </Form.Group>
-                    <Form.Group as={Row} className="mb-3" controlId="modalidade">
+                    <Form.Group as={Row}  className="mb-3" controlId="modalidade">
                         <Form.Label column sm={2}>Modalidade: </Form.Label>
                         <Col sm={10}>
-                            <Form.Control type="text" name="modalidade" onChange={handleDados}  />
+                            <Form.Control placeholder="Insira a modalidade do curso..." type="text" {...register("modalidade", validador.modalidade)} />
+                            {errors.modalidade && <span className="text-danger">{errors.modalidade.message}</span>}
                         </Col>
                     </Form.Group>
                     <div className="text-center">
-                        <Button variant="success" onClick={handleSubmit}><FaCheck /> Salvar</Button>
+                        <Button variant="success" onClick={handleSubmit(enviarDados)}><FaCheck /> Salvar</Button>
                         <Link className="btn btn-danger" to="/cursos"><FaArrowLeft /> Voltar</Link>
                     </div>
                 </Form>
@@ -51,4 +64,4 @@ const CursosForm = () => {
     )
 }
 
-export default CursosForm
+export default CursosForm;
